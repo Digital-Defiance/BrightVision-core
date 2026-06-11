@@ -520,7 +520,7 @@ tokenizers==0.22.1
     #   transformers
 tomlkit==0.14.0
     # via -r requirements/requirements.in
-torch==2.9.1
+torch==2.12.0
     # via sentence-transformers
 tqdm==4.67.1
     # via
