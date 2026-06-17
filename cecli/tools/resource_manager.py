@@ -407,7 +407,9 @@ class Tool(BaseTool):
                 return f"File already exists: {file_path}"
 
             # Create parent directories if they don't exist
-            os.makedirs(os.path.dirname(abs_path), exist_ok=True)
+            parent = os.path.dirname(abs_path)
+            if parent:
+                os.makedirs(parent, exist_ok=True)
 
             # Create an empty file
             with open(abs_path, "w", encoding="utf-8"):
