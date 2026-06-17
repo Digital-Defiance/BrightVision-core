@@ -53,6 +53,12 @@ class Tool(BaseTool):
         response = ToolResponse(cls.NORM_NAME)
 
         if coder:
+            reject = getattr(coder, "reject_yield", None)
+            if callable(reject):
+                blocked = reject(coder, **kwargs)
+                if blocked:
+                    return blocked
+
             # Check for active child sub-agents and await their tasks before finishing
             try:
                 agent_service = AgentService.get_instance(coder)
